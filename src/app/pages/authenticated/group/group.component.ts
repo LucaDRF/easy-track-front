@@ -16,20 +16,23 @@ export class GroupComponent implements OnInit {
   public loading: boolean = false;
 
   async ngOnInit() {
-      this.localStorageInfo = JSON.parse(localStorage.getItem('groupInfo')!);
+    this.localStorageInfo = JSON.parse(localStorage.getItem('groupInfo')!);
 
-      this.loading = true;
+    this.loading = true;
 
-      this.info = await this.groupService.getGroup(this.localStorageInfo.groupId);
+    this.info = await this.groupService.getGroup(this.localStorageInfo.groupId);
 
-      const userInfo = localStorage.getItem('loggedUserInfo') && JSON.parse(localStorage.getItem('loggedUserInfo')!);
+    const userInfo = localStorage.getItem('loggedUserInfo') && JSON.parse(localStorage.getItem('loggedUserInfo')!);
 
-      const hasAss = this.info.user_groups.find((ass: any) => ass.userId === userInfo.id);
+    this.loading = false;
 
-      this.info.isIn = !!hasAss;
-      this.info.isUserConfirmed = hasAss && hasAss.isConfirmed;
+    if (!this.info.user_groups || !this.info.user_groups.length) return;
 
-      this.loading = false;
+    const hasAss = this.info.user_groups.find((ass: any) => ass.userId === userInfo.id);
+
+    this.info.isIn = !!hasAss;
+    this.info.isUserConfirmed = hasAss && hasAss.isConfirmed;
+
   }
 
 
