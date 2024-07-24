@@ -41,7 +41,7 @@ export class GroupComponent implements OnInit {
 
     await this.groupService.enterGroup(this.info.id);
 
-    location.reload();
+    return this.ngOnInit();
   }
 
   async exitGroup() {
@@ -49,7 +49,7 @@ export class GroupComponent implements OnInit {
 
     await this.groupService.exitGroup(this.info.id);
 
-    location.reload();
+    return this.ngOnInit();
   }
 
   async confirmGroup() {
@@ -57,7 +57,7 @@ export class GroupComponent implements OnInit {
 
     await this.groupService.confirmGroup(this.info.id);
 
-    location.reload();
+    return this.ngOnInit();
   }
 
   async desconfirmGroup() {
@@ -65,7 +65,7 @@ export class GroupComponent implements OnInit {
 
     await this.groupService.desconfirmGroup(this.info.id);
 
-    location.reload();
+    return this.ngOnInit();
   }
 
 }
