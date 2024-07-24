@@ -1,0 +1,42 @@
+<div class="flex">
+  <app-loading *ngIf="loading"></app-loading>
+  <div class="flex flex-col p-9 gap-24" *ngIf="!loading">
+    <div class="flex gap-24">
+      <div class="flex flex-col ">
+        <h1 class="text-3xl font-bold mb-6">Grupo:</h1>
+        <img src="{{info.file}}" alt="">
+        <h1 class="text-xl">Onde: {{info.address}}</h1>
+        <h1 class="text-xl">Dia: {{info.date}}</h1>
+        <h1 class="text-xl">Hora: {{info.hour}}</h1>
+        <h1 class="text-xl">Trajeto: {{info.length}} kms</h1>
+        <h1 class="text-xl">{{info.people}} / {{info.limit}}</h1>
+      </div>
+      <div class="flex flex-col ">
+        <h1 class="text-3xl font-bold mb-6">Dados do criador:</h1>
+        <img src="{{info.file}}" alt="">
+        <h1 class="text-xl">Nome: {{info.user.name}}</h1>
+        <h1 class="text-xl">Último nome: {{info.user.lastName}}</h1>
+        <h1 class="text-xl">Telefone: {{info.userNumber}}</h1>
+        <h1 class="text-xl">Email: {{info.user.email}}</h1>
+      </div>
+      <div class="flex flex-col">
+        <h1 class="text-3xl font-bold mb-6">Lista de participantes:</h1>
+        <div class="flex flex-col">
+          <div class="flex gap-8 text-xl" *ngFor="let ass of info.user_groups">
+            <h1>{{ass.user.name}}</h1>
+            <h1>Confirmado: {{ass.isConfirmed ? 'sim' : 'não'}}</h1>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="{{info.fileUrl}}" alt="">
+      </div>
+    </div>
+    <div class="flex gap-8">
+      <div class="border p-5 button" (click)="enterGroup()" *ngIf="!info.isIn">Entrar</div>
+      <div class="border p-5 button" (click)="exitGroup()" *ngIf="info.isIn">Sair</div>
+      <div class="border p-5 button" (click)="confirmGroup()" *ngIf="info.isIn && !info.isUserConfirmed">Confirmar</div>
+      <div class="border p-5 button" (click)="desconfirmGroup()" *ngIf="info.isIn && info.isUserConfirmed">Desconfirmar</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="flex">
+  <app-loading *ngIf="loading"></app-loading>
+  <div class="flex flex-col p-9" *ngIf="!loading">
+    <h1 class="text-3xl font-bold mb-6">Meus grupos:</h1>
+    <div class="flex gap-4 flex-wrap">
+      <div class="border w-fit cursor-pointer p-8" *ngFor="let group of groups" (click)="enterGroupInfo(group.groupId)">
+        <h1 class="text-xl">Onde: {{group.group.address}}</h1>
+        <h1 class="text-xl">Dia: {{group.group.date}}</h1>
+        <h1 class="text-xl">Hora: {{group.group.hour}}</h1>
+        <h1 class="text-xl">Trajeto: {{group.group.length}} kms</h1>
+        <h1 class="text-xl">Confirmado: {{group.isConfirmed ? 'sim' : 'não'}}</h1>
+      </div>
+    </div>
+  </div>
+</div>

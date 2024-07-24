@@ -1,0 +1,71 @@
+<div class="flex h-full w-full justify-center items-center py-6">
+  <div class="flex flex-col px-12 pt-16 pb-16 container w-auto" style="min-width: 30%;">
+    <div class="mb-6">
+      <h1 class="font-semibold text-xl">Seja muito bem vindo à nossa plataforma!</h1>
+      <p>Registre-se e se torne mais produtivo ainda hoje <br> com o poder da IA nas suas mãos.</p>
+    </div>
+    <app-loading class="flex items-center justify-center w-full h-3/5" *ngIf="loading"></app-loading>
+    <form *ngIf="!loading" [formGroup]="userForm">
+      <div class="flex flex-col">
+          <div class="flex flex-col">
+            <label class="ml-2 text-xs font-normal" for="name">Nome</label>
+            <input class="input-container mt-2" type="text" formControlName="name" id="name" placeholder="Nome">
+            <div *ngIf="name.invalid && hasSubmitted" class="flex flex-col">
+              <small *ngIf="name.getError('required')" class="text-red-600">Nome é obrigatório</small>
+              <small *ngIf="name.getError('maxlength')" class="text-red-600">Máximo de 255 caracteres</small>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <label class="ml-2 text-xs font-normal mt-4" for="lastName">Sobrenome</label>
+            <input class="input-container mt-2" type="text" formControlName="lastName" id="lastName" placeholder="Sobrenome">
+            <div *ngIf="lastName.invalid && hasSubmitted" class="flex flex-col">
+              <small *ngIf="lastName.getError('required')" class="text-red-600">Sobrenome é obrigatório</small>
+              <small *ngIf="lastName.getError('maxlength')" class="text-red-600">Máximo de 255 caracteres</small>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <label class="ml-2 text-xs font-normal mt-4" for="age">Idade</label>
+            <input class="input-container mt-2" type="number" formControlName="age" id="age" placeholder="Sobrenome">
+            <div *ngIf="age.invalid && hasSubmitted" class="flex flex-col">
+              <small *ngIf="age.getError('required')" class="text-red-600">Idade é obrigatório</small>
+              <small *ngIf="age.getError('maxlength')" class="text-red-600">Máximo de 255 caracteres</small>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <label class="ml-2 text-xs font-normal mt-4" for="email">Email</label>
+            <input autocomplete="email" class="input-container mt-2" type="email" formControlName="email" id="email" placeholder="Email">
+            <div *ngIf="email.invalid && hasSubmitted" class="flex flex-col">
+              <small *ngIf="email.getError('required')" class="text-red-600">Email é obrigatório</small>
+              <small *ngIf="email.getError('maxlength')" class="text-red-600">Máximo de 255 caracteres</small>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <label class="ml-2 text-xs font-normal mt-4" for="password">Senha</label>
+            <input autocomplete="new-password" class="input-container mt-2" type="password" formControlName="password" id="password" placeholder="Sua senha aqui...">
+            <div *ngIf="password.invalid && hasSubmitted" class="flex flex-col">
+              <small *ngIf="password.getError('required')" class="text-red-600">Senha é obrigatória</small>
+              <small *ngIf="password.getError('maxlength')" class="text-red-600">Máximo de 255 caracteres</small>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <label class="ml-2 text-xs font-normal mt-4" for="gender">Sexo:</label>
+            <select class="formSelect text-base" formControlName="gender" id="gender">
+              <option value=""></option>
+              <option value="masculino">Masculino</option>
+              <option value="feminino">Feminino</option>
+              <option value="outro">Outro</option>
+            </select>
+            <div *ngIf="gender.invalid && hasSubmitted" class="flex flex-col">
+              <small *ngIf="gender.getError('required')" class="text-red-600">Sexo é obrigatório</small>
+            </div>
+          </div>
+      </div>
+      <div class="separator">
+        <div class="login-container flex justify-center mt-8 cursor-pointer" (click)="submitForm()">
+          Registrar
+        </div>
+      </div>
+    </form>
+    <p *ngIf="!loading" class="text-xs self-center mt-6">Já tem uma conta? <a class="cursor-pointer" routerLink='/auth/login'>Faça seu login!</a></p>
+  </div>
+</div>

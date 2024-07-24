@@ -1,0 +1,30 @@
+<div class="flex h-full w-full justify-center items-center">
+  <div class="flex flex-col px-12 pt-16 pb-16 container w-auto" style="min-width: 30%;">
+    <h1 class="font-semibold text-xl mb-6">Que bom te ver de volta! :)</h1>
+    <app-loading class="flex items-center justify-center w-full h-3/5" *ngIf="loading"></app-loading>
+    <div class="flex flex-col" *ngIf="!loading">
+      <div class="flex flex-col">
+        <div class="flex flex-col">
+          <label class="ml-2 text-xs font-normal" for="login">Login</label>
+          <input [(ngModel)]="email" class="input-container mt-2" type="text" id="login" placeholder="Email">
+          <div *ngIf="emailError" class="flex flex-col">
+            <small class="text-red-600">Email é obrigatório</small>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <label class="ml-2 text-xs font-normal mt-4" for="password">Senha</label>
+          <input [(ngModel)]="password" class="input-container mt-2" type="password" id="password" placeholder="Sua senha aqui...">
+          <div *ngIf="passwordError" class="flex flex-col">
+            <small class="text-red-600">Senha é obrigatória</small>
+          </div>
+        </div>
+      </div>
+      <div class="separator">
+        <div class="login-container flex justify-center mt-8 cursor-pointer" (click)="loginUser()">
+          Login
+        </div>
+      </div>
+      <p class="text-xs self-center mt-6">Não tem uma conta? <a class="cursor-pointer" routerLink='/auth/register'>Registre-se agora!</a></p>
+    </div>
+  </div>
+</div>

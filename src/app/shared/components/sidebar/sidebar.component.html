@@ -1,0 +1,35 @@
+<div class="flex h-full">
+
+  <div *ngIf="loading" class="w-full h-full absolute bg-white">
+    <app-loading class="h-4/5 flex justify-center items-center"></app-loading>
+  </div>
+  <div style="height: 100%; width: 300px;">
+    <div class="sidebar flex flex-col items-center">
+      <div class="flex flex-col justify-between h-4/5" *ngIf="!loading">
+        <div class="user_info flex flex-col items-center">
+          <img class="user-icon" src="assets/images/user-icon.png" alt="">
+          <p class="title_user_name">{{userInfo.name}} {{userInfo.lastName}}</p>
+          <p class="subtitle_user_occupation">{{userInfo.age}} anos</p>
+        </div>
+        <div>
+          <div class="item-container flex flex-row items-center cursor-pointer select-none border p-3" [ngClass]="{'font-extrabold': home.isActive}" [routerLink]="'home'" (click)="changePage('home')" routerLinkActive #home="routerLinkActive">
+            <p class="sidebar-item-title">Grupos</p>
+          </div>
+        </div>
+        <div>
+          <div class="item-container flex flex-row items-center cursor-pointer select-none border p-3" [ngClass]="{'font-extrabold': myGroups.isActive}" [routerLink]="'my-groups'" (click)="changePage('my-groups')" routerLinkActive #myGroups="routerLinkActive">
+            <p class="sidebar-item-title">Meus grupos</p>
+          </div>
+        </div>
+        <div>
+          <div class="item-container flex flex-row items-center cursor-pointer select-none border p-3" [ngClass]="{'font-extrabold': createGroups.isActive}" [routerLink]="'create-groups'" (click)="changePage('create-groups')" routerLinkActive #createGroups="routerLinkActive">
+            <p class="sidebar-item-title">Criar grupos</p>
+          </div>
+        </div>
+        <div class="flex flex-row items-center cursor-pointer gap-2 select-none">
+          <p style="color: #7E8299; font-weight: 600;" (click)="logOut()">Log Out</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

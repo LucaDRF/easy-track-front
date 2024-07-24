@@ -1,0 +1,40 @@
+.sidebar {
+  height: 100%;
+  background-color: #C8C8CC;
+  font-family: 'Poppins';
+}
+
+.user_info {
+  margin-top: 130px;
+}
+
+.title_user_name {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: #212121;
+}
+
+.subtitle_user_occupation {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 18px;
+  color: #7E8299;
+}
+
+
+.item-container {
+  gap: 8px;
+  color: #5E6278;
+  margin-bottom: 19px;
+}
+
+.sidebar-item-title {
+  font-size: 24px;
+  line-height: 22px;
+}
+
+.user-icon {
+  height: 80px;
+  margin-bottom: 12px;
+}

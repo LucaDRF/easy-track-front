@@ -1,0 +1,42 @@
+.container {
+  border: 1px solid #000000;
+  border-radius: 9px;
+}
+
+.input-container {
+  height: 48px;
+  padding: 8px;
+  padding-left: 16px;
+  background-color: #F2F2F2;
+  border-radius: 6px;
+}
+
+.input-container:focus{
+  outline: none;
+}
+
+.login-container {
+  height: 100%;
+  background-color: #00D7AE;
+  border-radius: 6px;
+  color: #FFFFFF;
+  padding: 10px 0
+}
+
+.google-login-container {
+  height: 100%;
+  background-color: #333333;
+  border-radius: 6px;
+  color: #FFFFFF;
+  padding: 10px 0
+}
+
+.separator {
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+a {
+  color: #00D7AE;
+}

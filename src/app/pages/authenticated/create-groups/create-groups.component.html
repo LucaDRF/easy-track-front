@@ -1,0 +1,69 @@
+<div class="flex flex-col pt-8 pl-20 pr-24 pb-6 w-full h-full">
+  <h1 class="text-3xl font-semibold">Criar grupo</h1>
+  <app-loading class="flex items-center justify-center w-full h-3/5" *ngIf="addLoading"></app-loading>
+  <form [hidden]="addLoading" [formGroup]="groupForm" (ngSubmit)="submitForm()" class="mt-4">
+    <div class="flex flex-col gap-10">
+      <div class="flex gap-6">
+        <div class="flex flex-col">
+          <label class="required" for="length">Tamanho</label>
+          <input class="formInput" id="length" type="number" maxlength="255" formControlName="length">
+          <div *ngIf="length.invalid && hasSubmitted" class="flex flex-col">
+            <small *ngIf="length.getError('required')" class="text-red-600">Tamanho é obrigatório</small>
+            <small *ngIf="length.getError('maxlength')" class="text-red-600">Máximo de 255 caracteres</small>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <label class="required" for="address">Endereço</label>
+          <input class="formInput" id="address" type="text" maxlength="255" formControlName="address">
+          <div *ngIf="address.invalid && hasSubmitted" class="flex flex-col">
+            <small *ngIf="address.getError('required')" class="text-red-600">Endereço é obrigatório</small>
+            <small *ngIf="address.getError('maxlength')" class="text-red-600">Máximo de 255 caracteres</small>
+          </div>
+        </div>
+      </div>
+      <div class="flex gap-6">
+        <div class="flex flex-col">
+          <label class="required" for="limit">Limite de pessoas</label>
+          <input class="formInput" id="limit" type="number" maxlength="255" formControlName="limit">
+          <div *ngIf="limit.invalid && hasSubmitted" class="flex flex-col">
+            <small *ngIf="limit.getError('required')" class="text-red-600">Limite é obrigatório</small>
+            <small *ngIf="limit.getError('maxlength')" class="text-red-600">Máximo de 255 caracteres</small>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <label class="required" for="startDate">Data</label>
+          <input class="formInput" id="startDate" type="date" maxlength="255" formControlName="startDate">
+          <div *ngIf="startDate.invalid && hasSubmitted" class="flex flex-col">
+            <small *ngIf="startDate.getError('required')" class="text-red-600">Data é obrigatório</small>
+            <small *ngIf="startDate.getError('maxlength')" class="text-red-600">Máximo de 255 caracteres</small>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <label for="creatorNumber">Telefone</label>
+          <input class="formInput" id="creatorNumber" type="text" maxlength="255" formControlName="creatorNumber">
+          <div *ngIf="creatorNumber.invalid && hasSubmitted" class="flex flex-col">
+            <small *ngIf="creatorNumber.getError('maxlength')" class="text-red-600">Máximo de 255 caracteres</small>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-5">
+        <span class="required">Selecione o trajeto</span>
+        <img *ngIf="filePreview" class="h-48 w-40 object-cover" [src]="sanitize(filePreview)" alt="Current profile photo" />
+        <label class="block">
+          <input #thumbInput type="file" accept="image/*" (change)="uploadFile($event)" class="block w-full text-sm text-slate-500
+            file:mr-4 file:py-2 file:px-4
+            file:rounded-full file:border-0
+            file:text-sm file:font-semibold
+            file:bg-violet-50 file:text-violet-700
+            hover:file:bg-violet-100
+          "/>
+        </label>
+        <div *ngIf="!file && hasSubmitted" class="flex flex-col">
+          <small class="text-red-600">Adicione o trajeto</small>
+        </div>
+      </div>
+
+      <button class="bg-sky-500 hover:bg-sky-700 px-5 py-2 text-sm leading-5 rounded-full font-semibold text-white w-32 self-center" type="submit">Enviar</button>
+    </div>
+  </form>
+</div>
