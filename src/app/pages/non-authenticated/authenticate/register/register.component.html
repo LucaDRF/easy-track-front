@@ -25,7 +25,7 @@
           </div>
           <div class="flex flex-col">
             <label class="ml-2 text-xs font-normal mt-4" for="age">Idade</label>
-            <input class="input-container mt-2" type="number" formControlName="age" id="age" placeholder="Sobrenome">
+            <input class="input-container mt-2" type="number" formControlName="age" id="age" placeholder="Idade">
             <div *ngIf="age.invalid && hasSubmitted" class="flex flex-col">
               <small *ngIf="age.getError('required')" class="text-red-600">Idade é obrigatório</small>
               <small *ngIf="age.getError('maxlength')" class="text-red-600">Máximo de 255 caracteres</small>
